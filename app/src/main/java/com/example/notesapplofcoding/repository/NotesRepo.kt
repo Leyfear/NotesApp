@@ -5,10 +5,10 @@ import com.example.notesapplofcoding.db.Note
 
 class NotesRepo(databaseNote: DatabaseNote) {
 
-    val noteDao = databaseNote.noteDao.also { println("asd1") }
-    suspend fun upsertNote(note: Note) = noteDao.upsertNote(note).also { println("asd2") }
-    suspend fun deleteNote(note:Note) = noteDao.deteleNote(note).also { println("asd3") }
-    fun getNotes() = noteDao.selectNotes().also { println("bunu") }
+    val noteDao = databaseNote.noteDao
+    suspend fun upsertNote(note: Note) = noteDao.upsertNote(note)
+    suspend fun deleteNote(note:Note) = noteDao.deteleNote(note)
+    fun getNotes() = noteDao.selectNotes()
     fun searchNotes(searchQuery: String) = noteDao.searchInNotesTitle(searchQuery)
     suspend fun deleteAllNotes() =  noteDao.deleteAllNotes()
 }
